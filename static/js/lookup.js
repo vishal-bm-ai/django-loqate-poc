@@ -41,7 +41,7 @@ function findAddress(SecondFind) {
 var Key = "RK95-MP99-AP74-XG69",
     IsMiddleware = true,
     Origin = "",
-    Countries = "GBR",
+    // Countries = "US",
     Limit = "10",
     Language = "en-gb",  
 		url = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
@@ -51,7 +51,7 @@ var params = '';
     params += "&IsMiddleware=" + encodeURIComponent(IsMiddleware);
     params += "&Container=" + encodeURIComponent(Container);
     params += "&Origin=" + encodeURIComponent(Origin);
-    params += "&Countries=" + encodeURIComponent(Countries);
+    // params += "&Countries=" + encodeURIComponent(Countries);
     params += "&Limit=" + encodeURIComponent(Limit);
     params += "&Language=" + encodeURIComponent(Language);
 var http = new XMLHttpRequest();

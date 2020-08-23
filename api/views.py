@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import requests
+import json
 from rest_framework import status
 from django_loqate_poc.loqate_key import KEY
 
@@ -18,7 +19,12 @@ class AddressFindAPIView(APIView):
             response = requests.post(url=url,params=params)
         except Exception as e:
             print(e)
-        return Response(response.json())
+        results = response.json()
+        # In case of error codes in making request we return the error response
+        # Refer here for error table : https://www.loqate.com/resources/support/apis/Capture/Interactive/Find/1.1/#errors
+        if "Error" in results:
+            return Response(status=400,data=results)
+        return Response(status=200,data=results)
 
 class AddressRetrieveAPIView(APIView):
 
@@ -33,4 +39,10 @@ class AddressRetrieveAPIView(APIView):
             response = requests.post(url=url,params=params)
         except Exception as e:
             print(e)
-        return Response(response.json())    
+        results = response.json()
+
+        # In case of error codes in making request we return the error response
+        # Refer here for error table https://www.loqate.com/resources/support/apis/Capture/Interactive/Retrieve/1/#errors
+        if "Error" in results:
+            return Response(status=400,data=results)
+        return Response(status=200,data=results)    
