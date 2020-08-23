@@ -39,12 +39,12 @@ function findAddress(SecondFind) {
 	} 
 	
 var Key = "RK95-MP99-AP74-XG69",
-    IsMiddleware = false,
+    IsMiddleware = true,
     Origin = "",
     Countries = "GBR",
     Limit = "10",
     Language = "en-gb",  
-		url = 'https://api.addressy.com/Capture/Interactive/Find/v1.10/json3.ws';
+		url = 'https://api.addressy.com/Capture/Interactive/Find/v1.1/json3.ws';
 var params = '';
     params += "&Key=" + encodeURIComponent(Key);
     params += "&Text=" + encodeURIComponent(Text);
