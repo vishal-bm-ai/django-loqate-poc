@@ -22,7 +22,7 @@ class AddressFindAPIView(APIView):
         results = response.json()
         # In case of error codes in making request we return the error response
         # Refer here for error table : https://www.loqate.com/resources/support/apis/Capture/Interactive/Find/1.1/#errors
-        if "Error" in results:
+        if "Error" in results["Items"][0]:
             return Response(status=400,data=results)
         return Response(status=200,data=results)
 
@@ -43,6 +43,6 @@ class AddressRetrieveAPIView(APIView):
 
         # In case of error codes in making request we return the error response
         # Refer here for error table https://www.loqate.com/resources/support/apis/Capture/Interactive/Retrieve/1/#errors
-        if "Error" in results:
+        if "Error" in results["Items"][0]:
             return Response(status=400,data=results)
         return Response(status=200,data=results)    
